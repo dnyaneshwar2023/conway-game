@@ -1,7 +1,23 @@
 class Game(private val cells: ArrayList<ArrayList<Cell>>) {
 
     fun getNextGeneration(): ArrayList<java.util.ArrayList<Cell>> {
-        val nextGeneration = ArrayList(cells)
+        val nextGeneration = ArrayList<ArrayList<Cell>>()
+
+        for (rowNumber in 0 until cells.size) {
+            nextGeneration.add(ArrayList())
+
+            cells[rowNumber].forEach { cell ->
+                nextGeneration[rowNumber].add(
+                    Cell(
+                        Position(
+                            cell.position.xCoordinate,
+                            cell.position.yCoordinate
+                        ), cell.status
+                    )
+                )
+            }
+
+        }
 
         for (rowNumber in 0 until cells.size) {
             for (columnNumber in 0 until cells[rowNumber].size) {
@@ -39,7 +55,7 @@ class Game(private val cells: ArrayList<ArrayList<Cell>>) {
 
             if (areVerticesWithinBoundry(xCoordinateOfNeighbour, yCoordinateOfNeighbour)) {
                 if (cells[xCoordinateOfNeighbour][yCoordinateOfNeighbour].isAlive()) {
-                    count++;
+                    count++
                 }
             }
         }

@@ -13,12 +13,12 @@ class GameTest {
 
         val expectedLiveCells: MutableList<Cell> = mutableListOf()
 
-        for(i in 0 until rows) {
-            for(j in 0 until  cols) {
-                val cell = Cell(Position(i, j), CellStatus.LIVE)
-                cells[i].add(cell)
+        for(rowNumber in 0 until rows) {
+            for(colNumber in 0 until  cols) {
+                val cell = Cell(Position(rowNumber, colNumber), CellStatus.LIVE)
+                cells[rowNumber].add(cell)
 
-                if(i == 0 || i == rows - 1 || j == 0 || j == cols - 1) {
+                if(rowNumber == 0 || rowNumber == rows - 1 || colNumber == 0 || colNumber == cols - 1) {
                     expectedLiveCells.add(cell)
                 }
             }
